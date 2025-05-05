@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "../css/Navbar.css";
 import {
   Navbar,
@@ -13,6 +13,9 @@ import { FaSearch, FaCamera } from "react-icons/fa";
 import Logo from "../assets/Logo1.svg";
 
 const NavbarComponent = () => {
+  const [closeMenu, setCloseMenu] = useState(false);
+  const toggleClose = () => setCloseMenu(prevState => !prevState);
+  const closeNavbar = () => setCloseMenu(false);
   return (
     <div className="hero-section">
       <Navbar variant="dark" expand="lg" className="navbar bg-transparent">
@@ -21,9 +24,9 @@ const NavbarComponent = () => {
             <img src={Logo} alt="Logo" width={60} />
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-3 my-2 my-lg-0" navbarScroll>
+          <Navbar.Toggle aria-controls="navbarScroll"   onClick={toggleClose} />
+          <Navbar.Collapse id="navbarScroll" in={closeMenu} >
+            <Nav className="me-3 my-2 my-lg-0" navbarScroll onClick={closeNavbar}>
               <Dropdown className="me-3">
                 <Dropdown.Toggle
                   variant="none"
