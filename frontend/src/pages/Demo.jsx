@@ -1,71 +1,99 @@
-import React , {useState} from 'react';
-import { Container, Row, Col, Button, Form, InputGroup, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Logo from "../assets/Logo1.svg";
-import '../css/Navbar.css'
-import { FaSearch, FaCamera } from "react-icons/fa";
+// import React, { useState, useRef, useEffect } from 'react';
+// import { ToastContainer, toast } from 'react-toastify';
+// import './Otp.css'; // Optional external styles
+// import 'react-toastify/dist/ReactToastify.css';
 
-const Demo = () => {
-  return (
-    <div className="hero-section">
-      {/* Navbar */}
-      <Navbar variant="dark" expand="lg" sticky="top" className="navbar bg-transparent">
-        <Container fluid>
-          <Navbar.Brand href="#home">
-            <img
-              src={Logo}
-              width={60}
-            //   className="d-inline-block align-top"
-              alt="Logo"
-            />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-5">
-              <NavDropdown title="Location" id="location-dropdown "  className="toggle text-white">
-                <NavDropdown.Item href="#">New York</NavDropdown.Item>
-                <NavDropdown.Item href="#">Los Angeles</NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="#best-seller">Best Seller</Nav.Link>
-              <Nav.Link href="#today-deals">Today Deals</Nav.Link>
-            </Nav>
-            <Form className="d-flex">
-              <InputGroup>
-                <Form.Control
-                  type="search"
-                  placeholder="Search for products..."
-                  className="me-2"
-                />
-                <Button variant="outline-light">
-                  <i className="bi bi-search"></i>
-                </Button>
-              </InputGroup>
-            </Form>
-            <Nav className="ms-3">
-              <NavDropdown title={<span><img src="/flags/it.png" alt="Italian" width="20" /> Italian</span>} id="lang-dropdown">
-                <NavDropdown.Item href="#">English</NavDropdown.Item>
-                <NavDropdown.Item href="#">Italian</NavDropdown.Item>
-              </NavDropdown>
-              <Button variant="warning" className="ms-2">Sign In</Button>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+// const Otp = ({ navigateTo }) => {
+//   const [otp, setOtp] = useState(['', '', '', '', '', '']);
+//   const [timer, setTimer] = useState(30);
+//   const [resendDisabled, setResendDisabled] = useState(true);
+//   const inputRefs = useRef([]);
 
-      {/* Hero Section */}
-      <div className="hero-content d-flex align-items-center">
-        <Container>
-          <Row className="text-center text-white">
-            <Col md={12}>
-              <h1 className="hero-title">ORGANIC</h1>
-              <h2 className="hero-subtitle">VEGETABLE & FRUITS</h2>
-              <p className="hero-tagline">"Experience the Taste of Real Organic"</p>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </div>
-  );
-}
+//   useEffect(() => {
+//     if (timer > 0) {
+//       const interval = setInterval(() => {
+//         setTimer((prev) => prev - 1);
+//       }, 1000);
+//       return () => clearInterval(interval);
+//     } else {
+//       setResendDisabled(false);
+//     }
+//   }, [timer]);
 
-export default Demo;
+//   const handleChange = (text, index) => {
+//     const newOtp = [...otp];
+//     if (text.length > 1) text = text.slice(-1);
+//     newOtp[index] = text;
+//     setOtp(newOtp);
+//     if (text && index < otp.length - 1) {
+//       inputRefs.current[index + 1].focus();
+//     }
+//   };
+
+//   const handleVerify = () => {
+//     const enteredOtp = otp.join('');
+//     if (enteredOtp === '123456') {
+//       toast.success('OTP Verified!');
+//       if (navigateTo) navigateTo(); // you can use react-router-dom navigation here
+//     } else {
+//       toast.error('Invalid OTP. Try again!');
+//     }
+//   };
+
+//   const handleResend = () => {
+//     setOtp(['', '', '', '', '', '']);
+//     setTimer(30);
+//     setResendDisabled(true);
+//     toast.info('OTP Resent!');
+//   };
+
+//   return (
+//     <div className="otp-container">
+//       <h2 className="otp-title">Almost there</h2>
+//       <p className="otp-subtitle">
+//         Please enter the 6-digit code sent to your email <span className="otp-highlight">mobile number +91***789</span> for verification.
+//       </p>
+
+//       <div className="otp-input-group">
+//         {otp.map((digit, index) => (
+//           <input
+//             key={index}
+//             type="text"
+//             inputMode="numeric"
+//             maxLength={1}
+//             value={digit}
+//             onChange={(e) => handleChange(e.target.value, index)}
+//             ref={(el) => (inputRefs.current[index] = el)}
+//             className="otp-input"
+//           />
+//         ))}
+//       </div>
+
+//       <button className="verify-button" onClick={handleVerify}>
+//         Verify
+//       </button>
+
+//       <p className="resend-text">
+//         Didn’t receive any code?
+//         <button
+//           disabled={resendDisabled}
+//           onClick={handleResend}
+//           className={`resend-link ${resendDisabled ? 'disabled' : ''}`}
+//         >
+//           Resend Again
+//         </button>
+//       </p>
+
+//       <div className="timer-text">
+//         <span className="timer-label">Request a new code in</span>
+//         <span className="timer-count">
+//           {timer > 0 ? `00:${timer < 10 ? `0${timer}` : timer}` : ''}
+//         </span>
+//       </div>
+
+//       <ToastContainer />
+//     </div>
+//   );
+// };
+
+// export default Otp;
