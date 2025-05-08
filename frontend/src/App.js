@@ -1,21 +1,21 @@
-// src/App.js
+
+
 import React from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import HomePage from './components/HomePage'; // update the path if necessar
-import HomePage from './pages/Categories';
+
+import logo from './logo.svg';
+import './App.css';
+
+import Navbaromponent from './components/Navbar';
+import Demo from './pages/Demo';
 
 function App() {
   return (
-    <>
-    <HomePage />
-    </>
-    // <Router>
-    //   <Routes>
-    //     <Route path="/" element={<HomePage />} />
-    //     {/* Add more routes here if needed */}
-    //   </Routes>
-    // </Router>
-);
+    <div className="App">
+<Navbaromponent/>
+<Demo/>
+    </div>
+  );
+
 }
 
 export default App;
